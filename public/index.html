@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Airport AODB</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Sign-in screen -->
+  <div id="login" class="login" hidden>
+    <form id="loginForm" class="login-card">
+      <div class="brand-mark big">✈</div>
+      <h2>Airport Operations</h2>
+      <p class="muted">Sign in to continue</p>
+      <label class="field"><span>Username</span><input id="lu" autocomplete="username" required></label>
+      <label class="field"><span>Password</span><input id="lp" type="password" autocomplete="current-password" required></label>
+      <p class="form-error" id="loginErr"></p>
+      <button class="btn primary wide">Sign in</button>
+    </form>
+  </div>
+
+  <!-- Application (shown after sign-in) -->
+  <div id="app" hidden>
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">✈</span>
+        <div><strong>AODB</strong><small>Airport Operations</small></div>
+      </div>
+      <nav id="nav">
+        <a href="#dashboard"  data-page="dashboard">Dashboard</a>
+        <a href="#flights"    data-page="flights">Flights</a>
+        <a href="#boarding"   data-page="boarding">Boarding</a>
+        <a href="#passengers" data-page="passengers">Passengers</a>
+        <a href="#staff"      data-page="staff">Staff</a>
+        <a href="#gates"      data-page="gates">Gates</a>
+        <a href="#reports"    data-page="reports">Reports</a>
+        <a href="#audit"      data-page="audit" data-role="admin">Audit log</a>
+        <a href="#lab"        data-page="lab"   data-role="admin">SQL Lab</a>
+        <a href="#users"      data-page="users" data-role="admin">Users</a>
+      </nav>
+      <div class="user-chip">
+        <div class="user-line"><strong id="uName"></strong><span id="uRole"></span></div>
+        <div class="user-actions">
+          <button class="btn small ghost" id="pwBtn">Password</button>
+          <button class="btn small ghost" id="logoutBtn">Sign out</button>
+        </div>
+      </div>
+      <div class="db-status"><span class="dot" id="dbDot"></span><span id="dbText">Connecting…</span></div>
+    </aside>
+    <main>
+      <header class="topbar">
+        <h1 id="pageTitle"></h1>
+        <div id="pageActions"></div>
+      </header>
+      <section id="view"></section>
+    </main>
+  </div>
+
+  <div class="backdrop" id="modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-head"><h2 id="modalTitle"></h2><button class="icon-btn" id="modalClose" aria-label="Close">×</button></div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+  <div id="toast" role="status"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
